@@ -1,0 +1,263 @@
+/* ==========================================================
+   VARIÁVEIS DE CORES E CONFIGURAÇÕES GERAIS
+   Variáveis facilitam a troca de temas e a reutilização de valores.
+   ========================================================== */
+:root {
+  --primary-color: #4f46e5;       /* Azul índigo moderno */
+  --primary-hover: #4338ca;       /* Tom mais escuro para efeito hover */
+  --bg-color: #f3f4f6;            /* Fundo da página cinza claro */
+  --card-bg: #ffffff;             /* Fundo do card principal branco */
+  --text-main: #1f2937;           /* Texto escuro principal */
+  --text-muted: #6b7280;          /* Texto secundário/cinza */
+  --border-color: #e5e7eb;        /* Cor das bordas */
+  --danger-color: #ef4444;        /* Vermelho para o botão de excluir */
+  --danger-hover: #dc2626;        /* Vermelho mais escuro no hover */
+  --success-color: #10b981;       /* Verde para tarefas concluídas */
+  --radius: 12px;                 /* Arredondamento padrão de bordas */
+}
+
+/* ==========================================================
+   RESET BÁSICO E TIPOGRAFIA
+   ========================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 16px;
+}
+
+/* ==========================================================
+   CONTÊINER PRINCIPAL (CARD)
+   ========================================================== */
+.app-container {
+  background-color: var(--card-bg);
+  width: 100%;
+  max-width: 520px;
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.app-header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* ==========================================================
+   FORMULÁRIO DE ENTRADA
+   ========================================================== */
+.todo-form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.todo-form input {
+  flex: 1;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.todo-form input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.todo-form button {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.todo-form button:hover {
+  background-color: var(--primary-hover);
+}
+
+.todo-form button:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================
+   RESUMO / CONTADOR
+   ========================================================== */
+.task-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================
+   LISTA DE TAREFAS (ITENS DINÂMICOS)
+   ========================================================== */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--primary-color); /* Indicador azul para tarefas pendentes */
+  padding: 12px 14px;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.todo-item:hover {
+  background-color: #f9fafb;
+  border-color: #d1d5db;
+  border-left-color: var(--primary-hover);
+}
+
+/* Conteúdo da esquerda: Checkbox + Texto */
+.todo-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  cursor: pointer;
+}
+
+/* Checkbox estilizado */
+.todo-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary-color);
+  cursor: pointer;
+  transition: accent-color 0.2s ease;
+}
+
+.todo-text {
+  font-size: 1rem;
+  color: var(--text-main);
+  word-break: break-word;
+  transition: color 0.25s ease, text-decoration 0.25s ease, opacity 0.25s ease;
+}
+
+/* Conteúdo da direita: Badge de status + Botão de excluir */
+.todo-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Badge (etiqueta) de status */
+.status-badge {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.02em;
+  user-select: none;
+  transition: all 0.25s ease;
+}
+
+/* Estilo da badge quando a tarefa está PENDENTE */
+.badge-pending {
+  background-color: #e0e7ff;
+  color: #4338ca;
+  border: 1px solid #c7d2fe;
+}
+
+/* Estilo da badge quando a tarefa está CONCLUÍDA */
+.badge-completed {
+  background-color: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+/* ==========================================================
+   ESTILOS ESPECÍFICOS PARA TAREFA CONCLUÍDA
+   Quando a classe '.completed' está presente no <li>
+   ========================================================== */
+.todo-item.completed {
+  background-color: #f0fdf4;                 /* Fundo verde bem suave */
+  border-color: #bbf7d0;                     /* Borda sutilmente esverdeada */
+  border-left: 4px solid var(--success-color); /* Borda lateral verde vibrante */
+}
+
+.todo-item.completed:hover {
+  background-color: #e6f9ed;
+  border-left-color: #059669;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;             /* Risco sobre o texto */
+  color: #6b7280;                            /* Tom mais suave/apagado */
+  opacity: 0.75;
+}
+
+.todo-item.completed .todo-checkbox {
+  accent-color: var(--success-color);        /* Checkbox fica verde */
+}
+
+/* Botão de excluir */
+.btn-delete {
+  background: transparent;
+  border: none;
+  color: var(--danger-color);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: #fee2e2;
+  color: var(--danger-hover);
+}
+
+/* ==========================================================
+   ESTADO VAZIO (quando não há tarefas)
+   ========================================================== */
+.empty-state {
+  display: none; /* Controlado via JS */
+  text-align: center;
+  padding: 30px 10px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}

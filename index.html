@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minha Lista de Tarefas</title>
+  <!-- Vinculamos o arquivo de estilos CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Contêiner principal centralizado -->
+  <main class="app-container">
+    <header class="app-header">
+      <h1>Minha Lista de Tarefas</h1>
+      <p class="subtitle">Organize suas atividades diárias com facilidade</p>
+    </header>
+
+    <!-- Formulário para adicionar uma nova tarefa -->
+    <form id="todo-form" class="todo-form">
+      <input 
+        type="text" 
+        id="todo-input" 
+        placeholder="O que você precisa fazer hoje?" 
+        autocomplete="off"
+        required
+      >
+      <button type="submit" id="btn-add">Adicionar</button>
+    </form>
+
+    <!-- Resumo de status / contador -->
+    <div class="task-summary">
+      <span id="task-counter">0 tarefas no total</span>
+    </div>
+
+    <!-- Lista onde os itens de tarefas serão inseridos pelo JavaScript -->
+    <ul id="todo-list" class="todo-list">
+      <!-- As tarefas serão criadas dinamicamente aqui -->
+    </ul>
+
+    <!-- Mensagem exibida caso não haja nenhuma tarefa cadastrada -->
+    <div id="empty-state" class="empty-state">
+      <p>Nenhuma tarefa adicionada ainda. Que tal começar agora?</p>
+    </div>
+  </main>
+
+  <!-- Vinculamos nosso script JavaScript ao final da página -->
+  <script src="script.js"></script>
+</body>
+</html>
